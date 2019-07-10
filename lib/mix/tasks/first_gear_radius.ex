@@ -16,6 +16,13 @@ defmodule Mix.Tasks.FirstGearRadius do
 
     get_pegs()
     |> Gears.get_radiuses()
+    |> handle_response()
+  end
+
+  defp handle_response([-1, -1]), do: IO.inspect("Oooo bummer...you got back [-1, -1]")
+
+  defp handle_response(response) do
+    response
     |> List.first()
     |> IO.inspect(label: "The answer is")
   end
