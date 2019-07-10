@@ -37,6 +37,7 @@ defmodule Warehouse.Gears do
     end
   end
 
+  # make sure all gears are greater than 1
   defp gears_valid?(gears) do
     gears
     |> List.flatten()
