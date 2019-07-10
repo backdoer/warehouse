@@ -9,11 +9,8 @@ defmodule Warehouse.Application do
     # Define workers and child supervisors to be supervised
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    children = [
-      {Warehouse.Clients.Python, {}}
-    ]
 
     opts = [strategy: :one_for_one, name: Warehouse.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link([], opts)
   end
 end

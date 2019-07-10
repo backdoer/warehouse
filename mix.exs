@@ -22,7 +22,7 @@ defmodule Warehouse.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:erlport, "~> 0.9"}
+      {:elixir_linear_algebra, "~> 1.0.0", hex: :ela}
     ]
   end
 end

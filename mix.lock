@@ -1,3 +1,4 @@
 %{
+  "elixir_linear_algebra": {:hex, :ela, "1.0.0", "a5a741a63c280eda2ba1d21b1a5a25af6406c550fe00ad1e330ca426dc5463f2", [:mix], [], "hexpm"},
   "erlport": {:hex, :erlport, "0.10.1", "c96ffa51bbcab0298232fcdfe8c3e110f1598011de71ae6b9082b80c9e2e476a", [:rebar3], [], "hexpm"},
 }

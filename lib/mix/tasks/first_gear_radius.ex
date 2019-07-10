@@ -12,8 +12,6 @@ defmodule Mix.Tasks.FirstGearRadius do
   Warehouse.Gears to get radius of all gears
   """
   def run(_) do
-    ensure_started()
-
     get_pegs()
     |> Gears.get_radiuses()
     |> handle_response()
@@ -25,10 +23,6 @@ defmodule Mix.Tasks.FirstGearRadius do
     response
     |> List.first()
     |> IO.inspect(label: "\nThe answer is")
-  end
-
-  defp ensure_started do
-    {:ok, _} = Application.ensure_all_started(:warehouse)
   end
 
   defp get_pegs do
