@@ -3,8 +3,8 @@ defmodule Warehouse.GearsTest do
   alias Warehouse.Gears
   doctest Warehouse.Gears
 
-  describe "get_radius_of_first/1" do
-    test "should return correct radius as a ratio" do
+  describe "get_radiuses/1" do
+    test "should return correct radiuses as a ratio" do
       assert Gears.get_radiuses([4, 8]) == [[8, 3], [4, 3]]
     end
 
