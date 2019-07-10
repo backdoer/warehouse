@@ -19,12 +19,12 @@ defmodule Mix.Tasks.FirstGearRadius do
     |> handle_response()
   end
 
-  defp handle_response([-1, -1]), do: IO.inspect("Oooo bummer...you got back [-1, -1]")
+  defp handle_response([-1, -1]), do: IO.inspect("\nOooo bummer...you got back [-1, -1]")
 
   defp handle_response(response) do
     response
     |> List.first()
-    |> IO.inspect(label: "The answer is")
+    |> IO.inspect(label: "\nThe answer is")
   end
 
   defp ensure_started do
@@ -47,11 +47,11 @@ defmodule Mix.Tasks.FirstGearRadius do
         handle_exit_request(x, acc)
 
       :error ->
-        IO.puts("Please enter a number greater than 1 and less than 10,000")
+        IO.puts("Please enter a number greater than 1 and less than 10,000\n")
         handle_input(x, acc)
 
       input ->
-        IO.puts(input)
+        IO.puts("#{input}\n")
         {:cont, [input | acc]}
     end
   end
@@ -59,7 +59,7 @@ defmodule Mix.Tasks.FirstGearRadius do
   defp handle_exit_request(x, acc) when x > 2, do: {:halt, acc}
 
   defp handle_exit_request(x, acc) do
-    IO.puts("Please enter at least two pegs")
+    IO.puts("Please enter at least two pegs\n")
     handle_input(x, acc)
   end
 
