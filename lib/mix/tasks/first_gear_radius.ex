@@ -17,13 +17,13 @@ defmodule Mix.Tasks.FirstGearRadius do
     |> handle_response()
   end
 
-  defp handle_response([-1, -1]), do: IO.inspect("\nOooo bummer...you got back [-1, -1]")
+  defp handle_response([-1, -1]), do: IO.puts("\nOooo bummer...you got back [-1, -1]")
 
   defp handle_response(response) do
     response
     |> List.first()
     |> Fraction.as_list()
-    |> IO.inspect(label: "\nThe answer is")
+    |> IO.puts(label: "\nThe answer is")
   end
 
   defp get_pegs do

@@ -1,4 +1,7 @@
 defmodule Fraction do
+  @moduledoc """
+  Fraction functions
+  """
   defstruct [:numerator, :denominator]
 
   def new(numerator, denominator \\ 1)

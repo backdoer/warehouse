@@ -41,7 +41,10 @@ defmodule Warehouse.Gears.Matrix do
   end
 
   defp generate_matrix([first, second | tail], peg_count) do
-    [generate_row(first, second, peg_count) | generate_matrix([second | tail], peg_count)]
+    [
+      generate_row(first, second, peg_count)
+      | generate_matrix([second | tail], peg_count)
+    ]
   end
 
   defp generate_row({first_value, first_index}, {second_value, second_index}, peg_count) do

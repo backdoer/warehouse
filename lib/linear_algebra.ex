@@ -4,10 +4,7 @@ defmodule LinearAlgebra do
   via the Gaussian elimination method
   """
 
-  def solve_system_of_equations(matrix) do
-    matrix
-    |> reduce()
-  end
+  def solve_system_of_equations(matrix), do: reduce(matrix)
 
   @doc """
   Returns a row equivalent matrix on reduced row echelon form.
@@ -25,14 +22,13 @@ defmodule LinearAlgebra do
 
   defp reduce(matrix, row_number) do
     row = Enum.at(matrix, row_number)
-    non_zero_column = Enum.find_index(row, fn element -> element.numerator != 0 end)
+    non_zero_column = Enum.find_index(row, fn val -> val.numerator != 0 end)
     matrix = pivot(matrix, row_number, non_zero_column)
 
-    unless non_zero_column === length(row) - 1 or row_number === length(matrix) - 1 do
-      reduce(matrix, row_number + 1)
+    if non_zero_column == length(row) - 1 or row_number == length(matrix) - 1 do
+      Enum.map(matrix, &Enum.at(&1, -1))
     else
-      matrix
-      |> Enum.map(&Enum.at(&1, -1))
+      reduce(matrix, row_number + 1)
     end
   end
 
@@ -53,7 +49,10 @@ defmodule LinearAlgebra do
     end)
     |> List.insert_at(
       row_number,
-      multiply_row_by_constant(pivot_row, Fraction.division(Fraction.new(1, 1), pivot_element))
+      multiply_row_by_constant(
+        pivot_row,
+        Fraction.division(Fraction.new(1, 1), pivot_element)
+      )
     )
   end
 
