@@ -3,19 +3,26 @@ defmodule Warehouse.Gears do
   Gears documentation
   """
 
-  @doc """
-  Takes in list of peg positions and returns:
+  alias Warehouse.GaussianElimination
+  alias Warehouse.Matrix
 
-  a) the radius of the first peg as [a, b] where a/b is the radius
-    where the last peg has double the rpm of the first peg
-  b) [-1, -1] if no solution can be found
+  @doc """
+  Takes in list of peg positions, generate the linear algebra matrix with the rules,
+  and then pass to a linear algebra function to solve the matrix.
+
+  Returns:
+  a) the radiuses of the pegs as a list of [a, b] where a/b is the radius
+  b) :error if no solution is found
 
   ## Examples
 
-      iex> Gears.get_radius_of_first([4, 30, 50])
-      [12, 1]
+      iex> Gears.get_radiuses([4, 30, 50])
+      [[12, 1], [14, 1], [6, 1]]
   """
-  @spec get_radius_of_first([Integer.t()]) :: [Integer.t()]
-  def get_radius_of_first(peg_positions) do
+  @spec get_radiuses([Integer.t()]) :: [[]] | :error
+  def get_radiuses(pegs) do
+    pegs
+    |> Matrix.generate()
+    |> GaussianElimination.solve()
   end
 end

@@ -6,12 +6,14 @@ defmodule Warehouse do
   alias Warehouse.Gears
 
   @doc """
-  Hello world.
+  Collect input from user of the position of the pegs and then call
+  Warehouse.Gears to get radius of all gears
   """
   @spec call() :: [Integer.t()]
   def call do
     get_pegs()
-    |> Gears.get_radius_of_first()
+    |> Gears.get_radiuses()
+    |> List.first()
   end
 
   defp get_pegs do
