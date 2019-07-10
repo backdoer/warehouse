@@ -4,8 +4,6 @@ defmodule Warehouse.LinearAlgebra do
   via the Gaussian elimination method
   """
 
-  #alias ELA.Matrix
-
   def solve_system_of_equations(matrix) do
     matrix
     |> reduce()

@@ -21,8 +21,6 @@ defmodule Warehouse.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [
-      {:elixir_linear_algebra, "~> 1.0.0", hex: :ela}
-    ]
+    []
   end
 end
