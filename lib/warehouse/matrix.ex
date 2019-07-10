@@ -11,11 +11,11 @@ defmodule Warehouse.Matrix do
 
   ## Examples
 
-      iex> Matrix.generate([4, 30, 50])
+      iex> Warehouse.Matrix.generate([4, 30, 50])
       [
-        [1, 1, 0, 26]
+        [1, 1, 0, 26],
         [0, 1, 1, 20],
-        [1, 0 -2, 0]
+        [1, 0, -2, 0]
       ]
   """
   @spec generate([Integer.t()]) :: [[]] | :error

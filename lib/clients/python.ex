@@ -1,4 +1,4 @@
-defmodule Warehouse.PythonClient do
+defmodule Warehouse.Clients.Python do
   @moduledoc """
   Module for making calls to python
   """

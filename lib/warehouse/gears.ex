@@ -6,6 +6,8 @@ defmodule Warehouse.Gears do
   alias Warehouse.GaussianElimination
   alias Warehouse.Matrix
 
+  @minimum_gear_size 1
+
   @doc """
   Takes in list of peg positions, generate the linear algebra matrix with the rules,
   and then pass to a linear algebra function to solve the matrix.
@@ -24,5 +26,20 @@ defmodule Warehouse.Gears do
     pegs
     |> Matrix.generate()
     |> GaussianElimination.solve()
+    |> handle_response()
+  end
+
+  defp handle_response(gears) do
+    if gears_valid?(gears) do
+      gears
+    else
+      [-1, -1]
+    end
+  end
+
+  defp gears_valid?(gears) do
+    gears
+    |> List.flatten()
+    |> Enum.all?(fn gear -> gear >= @minimum_gear_size end)
   end
 end

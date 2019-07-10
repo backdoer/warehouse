@@ -4,12 +4,12 @@ defmodule Warehouse.GaussianElimination do
   via the Gaussian elimination method
   """
 
-  alias Warehouse.PythonClient
+  alias Warehouse.Clients.Python
 
   @doc """
   """
   @spec solve([]) :: []
   def solve(matrix) do
-    PythonClient.solve_system_of_equations(matrix)
+    Python.solve_system_of_equations(matrix)
   end
 end

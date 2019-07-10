@@ -10,7 +10,7 @@ defmodule Warehouse.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     children = [
-      {Warehouse.PythonClient, {}}
+      {Warehouse.Clients.Python, {}}
     ]
 
     opts = [strategy: :one_for_one, name: Warehouse.Supervisor]
