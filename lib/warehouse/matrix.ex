@@ -22,13 +22,12 @@ defmodule Warehouse.Matrix do
   def generate(pegs) do
     peg_count = Enum.count(pegs)
 
-    equations =
-      pegs
-      |> Enum.with_index()
-      |> generate_matrix(peg_count)
+    pegs
+    |> Enum.with_index()
+    |> generate_matrix(peg_count)
   end
 
-  defp generate_matrix([first, second | []] = pegs, peg_count) do
+  defp generate_matrix([first, second | []], peg_count) do
     last_row =
       Enum.map(0..peg_count, fn index ->
         cond do
@@ -41,7 +40,7 @@ defmodule Warehouse.Matrix do
     [generate_row(first, second, peg_count), last_row]
   end
 
-  defp generate_matrix([first, second | tail] = pegs, peg_count) do
+  defp generate_matrix([first, second | tail], peg_count) do
     [generate_row(first, second, peg_count) | generate_matrix([second | tail], peg_count)]
   end
 

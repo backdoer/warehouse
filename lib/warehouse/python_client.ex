@@ -4,6 +4,8 @@ defmodule Warehouse.PythonClient do
   """
   use GenServer
 
+  @python_file_dir "python"
+
   # Client
   #
   def start_link(_) do
@@ -12,11 +14,11 @@ defmodule Warehouse.PythonClient do
     GenServer.start_link(__MODULE__, pid, name: __MODULE__)
   end
 
-  def call(module, function, args) do
-    GenServer.call(__MODULE__, {:call, module, function, args})
+  def solve_system_of_equations(matrix) do
+    GenServer.call(__MODULE__, {:call, :linear_algebra, :solve_system_of_equations, [matrix]})
   end
 
-  defp python_file_path, do: Application.get_env(:warehouse, :python_file_path)
+  defp python_file_path, do: Path.join(:code.priv_dir(:warehouse), @python_file_dir)
 
   # Server (callbacks)
 

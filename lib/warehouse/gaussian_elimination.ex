@@ -10,6 +10,6 @@ defmodule Warehouse.GaussianElimination do
   """
   @spec solve([]) :: []
   def solve(matrix) do
-    PythonClient.call(:test, :solve_system_equations, [matrix])
+    PythonClient.solve_system_of_equations(matrix)
   end
 end
