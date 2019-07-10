@@ -11,11 +11,11 @@ defmodule Warehouse.Gears.Matrix do
 
   ## Examples
 
-      iex> Warehouse.Matrix.generate([4, 30, 50])
+      iex> Warehouse.Gears.Matrix.generate([4, 30, 50])
       [
-        [1, 1, 0, 26],
-        [0, 1, 1, 20],
-        [1, 0, -2, 0]
+        [%Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 0}, %Fraction{denominator: 1, numerator: 26}],
+        [%Fraction{denominator: 1, numerator: 0}, %Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 20}],
+        [%Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 0}, %Fraction{denominator: 1, numerator: -2}, %Fraction{denominator: 1, numerator: 0}]
       ]
   """
   @spec generate([Integer.t()]) :: [[]] | :error
@@ -31,9 +31,9 @@ defmodule Warehouse.Gears.Matrix do
     last_row =
       Enum.map(0..peg_count, fn index ->
         cond do
-          index == 0 -> fraction(1)
-          index == peg_count - 1 -> fraction(-2)
-          true -> fraction(0)
+          index == 0 -> Fraction.new(1)
+          index == peg_count - 1 -> Fraction.new(-2)
+          true -> Fraction.new(0)
         end
       end)
 
@@ -47,13 +47,11 @@ defmodule Warehouse.Gears.Matrix do
   defp generate_row({first_value, first_index}, {second_value, second_index}, peg_count) do
     Enum.map(0..peg_count, fn index ->
       cond do
-        index == first_index -> fraction(1)
-        index == second_index -> fraction(1)
-        index == peg_count -> fraction(abs(second_value - first_value))
-        true -> fraction(0)
+        index == first_index -> Fraction.new(1)
+        index == second_index -> Fraction.new(1)
+        index == peg_count -> Fraction.new(abs(second_value - first_value))
+        true -> Fraction.new(0)
       end
     end)
   end
-
-  defp fraction(value), do: Fraction.new(value)
 end

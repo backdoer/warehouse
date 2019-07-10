@@ -18,7 +18,11 @@ defmodule Warehouse.Gears do
   ## Examples
 
       iex> Gears.get_radiuses([4, 30, 50])
-      [[12, 1], [14, 1], [6, 1]]
+      [
+        %Fraction{denominator: 1, numerator: 12},
+        %Fraction{denominator: 1, numerator: 14},
+        %Fraction{denominator: 1, numerator: 6}
+      ]
   """
   @spec get_radiuses([Integer.t()]) :: [[]] | :error
   def get_radiuses(pegs) do
