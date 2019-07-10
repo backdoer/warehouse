@@ -3,7 +3,7 @@ defmodule Warehouse.Gears do
   Gears documentation
   """
 
-  alias Warehouse.GaussianElimination
+  alias Warehouse.LinearAlgebra
   alias Warehouse.Matrix
 
   @minimum_gear_size 1
@@ -25,7 +25,7 @@ defmodule Warehouse.Gears do
   def get_radiuses(pegs) do
     pegs
     |> Matrix.generate()
-    |> GaussianElimination.solve()
+    |> LinearAlgebra.solve_system_of_equations()
     |> handle_response()
   end
 

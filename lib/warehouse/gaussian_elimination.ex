@@ -1,4 +1,4 @@
-defmodule Warehouse.GaussianElimination do
+defmodule Warehouse.LinearAlgebra do
   @moduledoc """
   Module containing logic for solving systems of linear equations
   via the Gaussian elimination method
@@ -6,10 +6,5 @@ defmodule Warehouse.GaussianElimination do
 
   alias Warehouse.Clients.Python
 
-  @doc """
-  """
-  @spec solve([]) :: []
-  def solve(matrix) do
-    Python.solve_system_of_equations(matrix)
-  end
+  defdelegate solve_system_of_equations(matrix), to: Python
 end
