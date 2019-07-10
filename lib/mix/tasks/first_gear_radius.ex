@@ -22,6 +22,7 @@ defmodule Mix.Tasks.FirstGearRadius do
   defp handle_response(response) do
     response
     |> List.first()
+    |> Fraction.as_list()
     |> IO.inspect(label: "\nThe answer is")
   end
 

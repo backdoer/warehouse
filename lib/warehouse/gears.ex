@@ -3,8 +3,7 @@ defmodule Warehouse.Gears do
   Gears documentation
   """
 
-  alias Warehouse.LinearAlgebra
-  alias Warehouse.Matrix
+  alias Warehouse.Gears.Matrix
 
   @minimum_gear_size 1
 
@@ -41,6 +40,6 @@ defmodule Warehouse.Gears do
   defp gears_valid?(gears) do
     gears
     |> List.flatten()
-    |> Enum.all?(fn gear -> gear >= @minimum_gear_size end)
+    |> Enum.all?(fn gear -> Fraction.to_decimal(gear) >= @minimum_gear_size end)
   end
 end
