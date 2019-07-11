@@ -13,8 +13,25 @@ defmodule Mix.Tasks.FirstGearRadius do
   """
   def run(_) do
     get_pegs()
+    |> handle_sorting()
     |> Gears.get_radiuses()
     |> handle_response()
+  end
+
+  defp handle_sorting(input) do
+    sorted_array = Enum.sort(input)
+
+    if sorted_array != input do
+      IO.puts(
+        IO.ANSI.format([
+          :black_background,
+          :yellow,
+          "\nThe pegs you gave us weren't in ascending order so we've sorted them for you and will continue with the operation"
+        ])
+      )
+    end
+
+    sorted_array
   end
 
   defp handle_response([-1, -1]), do: IO.puts("\nOooo bummer...you got back [-1, -1]")
