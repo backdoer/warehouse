@@ -38,7 +38,7 @@ This implementation works well with small datasets (4x faster than the python im
 
 #### Credit
 Fractions Code: https://github.com/lermannen/elixir-fraction <br />
-Linear Algebra Code: https://github.com/SebastianCallh/elixir-linear-algebra
+Linear Algebra Algorithms: https://github.com/SebastianCallh/elixir-linear-algebra
 
 #### Setup
 
