@@ -10,12 +10,10 @@ defmodule LinearAlgebra do
   Returns a row equivalent matrix on reduced row echelon form.
   ## Examples
     
-      iex> Matrix.reduce([[1.0, 1.0, 2.0, 1.0],
-      ...>                [2.0, 1.0, 6.0, 4.0],
-      ...>                [1.0, 2.0, 2.0, 3.0]])
-      [[1.0, 0.0, 0.0, -5.0],
-       [0.0, 1.0, 0.0, 2.0],
-       [0.0, 0.0, 1.0, 2.0]]
+      iex> LinearAlgebra.reduce([[Fraction.new(1), Fraction.new(1), Fraction.new(2), Fraction.new(1)],
+      ...>                [Fraction.new(2), Fraction.new(1), Fraction.new(6), Fraction.new(4)],
+      ...>                [Fraction.new(1), Fraction.new(2), Fraction.new(2), Fraction.new(3)]])
+      [ Fraction.new(-5), Fraction.new(2), Fraction.new(2) ]
   """
   @spec reduce([[number]]) :: [[number]]
   def reduce(matrix), do: reduce(matrix, 0)

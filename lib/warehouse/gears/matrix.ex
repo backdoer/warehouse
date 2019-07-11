@@ -13,9 +13,9 @@ defmodule Warehouse.Gears.Matrix do
 
       iex> Warehouse.Gears.Matrix.generate([4, 30, 50])
       [
-        [%Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 0}, %Fraction{denominator: 1, numerator: 26}],
-        [%Fraction{denominator: 1, numerator: 0}, %Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 20}],
-        [%Fraction{denominator: 1, numerator: 1}, %Fraction{denominator: 1, numerator: 0}, %Fraction{denominator: 1, numerator: -2}, %Fraction{denominator: 1, numerator: 0}]
+        [Fraction.new(1), Fraction.new(1), Fraction.new(0), Fraction.new(26)],
+        [Fraction.new(0), Fraction.new(1), Fraction.new(1), Fraction.new(20)],
+        [Fraction.new(1), Fraction.new(0), Fraction.new(-2), Fraction.new(0)]
       ]
   """
   @spec generate([Integer.t()]) :: [[]] | :error
