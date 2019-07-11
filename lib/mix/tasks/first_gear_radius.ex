@@ -19,13 +19,15 @@ defmodule Mix.Tasks.FirstGearRadius do
     |> handle_response()
   end
 
-  defp handle_response([-1, -1]), do: IO.inspect("\nOooo bummer...you got back [-1, -1]")
+  defp handle_response([-1, -1]), do: IO.puts("\nOooo bummer...you got back [-1, -1]")
 
   defp handle_response(response) do
     response
     |> List.first()
-    |> IO.inspect(label: "\nThe answer is")
+    |> print_result()
   end
+
+  defp print_result(result), do: IO.puts("\nThe answer is #{inspect(result)}")
 
   defp ensure_started do
     {:ok, _} = Application.ensure_all_started(:warehouse)

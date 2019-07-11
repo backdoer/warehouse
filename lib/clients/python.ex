@@ -15,7 +15,10 @@ defmodule Warehouse.Clients.Python do
   end
 
   def solve_system_of_equations(matrix) do
-    GenServer.call(__MODULE__, {:call, :linear_algebra, :solve_system_of_equations, [matrix]})
+    GenServer.call(
+      __MODULE__,
+      {:call, :linear_algebra, :solve_system_of_equations, [matrix]}
+    )
   end
 
   defp python_file_path, do: Path.join(:code.priv_dir(:warehouse), @python_file_dir)
