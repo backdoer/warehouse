@@ -10,33 +10,41 @@ power by the last gear in the system.
 This application provides you with the functionality to be able to determine the necessary gear sizes.
 
 ## Dependencies
-* Python 3
-* Elixir 1.7.3
-* Erlang 21.0
+* Python 3 (only for python implementation on master branch)
+* Elixir 1.7
+* Erlang 21
 
-Run `mix deps.get` && `pip3 install --user --requirement requirements.txt` to install the necessary python and elixir packages
+A `.tool-versions` has been included for installing the necessary dependencies with `asdf`.
+
 
 ## Implementations
 Both implementations create a matrix from the inputs and then utilize linear algebra to solve for a system of linear equations. 
 
 ### Porting to Python
-**Branch**: `master`
+**Branch**: `master` <br />
 This approach utilizes python's `numpy` library to handle the linear algebra. It then uses python's
 fraction library to resolve the floating decimal point to the closest fraction within a denominator of 10.
 This implementation works very well with large datasets (4x faster than the native elixir implementation and over 100x more memory efficient; see benchmarking)
 
+#### Setup
+
+Run `mix deps.get` && `pip3 install --user --requirement requirements.txt` 
+
 ### Native Elixir
-**Branch**: `use-fractions`
+**Branch**: `use-fractions` <br />
 This approach utilizes linear algebra functions and fraction functions written in Native Elixir.
 Specifically, it reduces the matrix into row echelon form utilizing Gaussian elimination.
 This implementation works well with small datasets (4x faster than the python implementation, although stil uses over 10x the memory; see benchmarking)
 
+#### Setup
+
+Run `mix deps.get`
 
 All IO is handled with `IO.gets/1` and `IO.puts/1`. I considered using `Logger` for things like user warnings but it didn't feel like the right use case because
 `Logger` is more for application monitoring. 
 
 ## Benchmarking Both Implementations
-To run the benchmarks, go to the `both-solutions` branch and run `mix benchmark`
+To run the benchmarks, go to the `both-solutions` branch and run `mix deps.get` and `mix benchmark`
 
 ```
 Operating System: macOS
