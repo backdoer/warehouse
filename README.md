@@ -1,21 +1,22 @@
 # Warehouse
 
-**TODO: Add description**
+In the Divvy Manufacturing floor, we have a bunch of machines that run off of mechanical
+wind power. We routinely move our machines around the manufacturing floor as new
+machines come out and old ones get retired. We need to get mechanical power from the
+output of our windmills to our machines through a complex network of gears. Not only does
+the power have to get to the machine, but it also needs to double the RPM of the input
+power by the last gear in the system.
 
-## Installation
+This application provides helper functions to be able to determine the necessary gear sizes.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `warehouse` to your list of dependencies in `mix.exs`:
+## Setup
+Run `mix deps.get` && `pip install numpy` to install the necessary packages
+* Python 3
+* Elixir
+* Erlang
 
-```elixir
-def deps do
-  [
-    {:warehouse, "~> 0.1.0"}
-  ]
-end
-```
+## Implementations
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/warehouse](https://hexdocs.pm/warehouse).
+## Benchmarking
 
+## Run
