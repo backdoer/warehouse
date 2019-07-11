@@ -22,7 +22,7 @@ Both implementations create a matrix from the inputs and then utilize linear alg
 
 ### Porting to Python
 **Branch**: `master` <br />
-This approach utilizes python's `numpy` library to handle the linear algebra. It then uses python's
+This approach ports to a python process and then utilizes python's `numpy` library to handle the linear algebra. It then uses python's
 fraction library to resolve the floating decimal point to the closest fraction within a denominator of 10.
 This implementation works very well with large datasets (4x faster than the native elixir implementation and over 100x more memory efficient; see benchmarking)
 
