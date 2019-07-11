@@ -12,11 +12,28 @@ defmodule Mix.Tasks.FirstGearRadius do
   Warehouse.Gears to get radius of all gears
   """
   def run(_) do
-    ensure_started()
+    Application.ensure_all_started(:warehouse)
 
     get_pegs()
+    |> handle_sorting()
     |> Gears.get_radiuses()
     |> handle_response()
+  end
+
+  defp handle_sorting(input) do
+    sorted_array = Enum.sort(input)
+
+    if sorted_array != input do
+      IO.puts(
+        IO.ANSI.format([
+          :black_background,
+          :yellow,
+          "\nThe pegs you gave us weren't in ascending order so we've sorted them for you and will continue with the operation"
+        ])
+      )
+    end
+
+    sorted_array
   end
 
   defp handle_response([-1, -1]), do: IO.puts("\nOooo bummer...you got back [-1, -1]")
@@ -28,10 +45,6 @@ defmodule Mix.Tasks.FirstGearRadius do
   end
 
   defp print_result(result), do: IO.puts("\nThe answer is #{inspect(result)}")
-
-  defp ensure_started do
-    {:ok, _} = Application.ensure_all_started(:warehouse)
-  end
 
   defp get_pegs do
     1..20
