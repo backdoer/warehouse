@@ -23,8 +23,10 @@ defmodule Mix.Tasks.FirstGearRadius do
     response
     |> List.first()
     |> Fraction.as_list()
-    |> IO.puts(label: "\nThe answer is")
+    |> print_result()
   end
+
+  defp print_result(result), do: IO.puts("\nThe answer is #{inspect(result)}")
 
   defp get_pegs do
     1..20
