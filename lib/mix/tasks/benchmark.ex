@@ -8,17 +8,20 @@ defmodule Mix.Tasks.Benchmark do
   alias Warehouse.V2.Gears, as: GearsV2
 
   @doc """
-  Collect input from user of the position of the pegs and then call
-  Warehouse.Gears to get radius of all gears
+  Benchmark the 2 different implementations
   """
   def run(_) do
     Application.ensure_all_started(:warehouse)
-    pegs = [4, 30, 50, 70, 80, 100, 120]
 
     Benchee.run(
       %{
-        "native_elixir" => fn -> GearsV2.get_radiuses(pegs) end,
-        "python" => fn -> Gears.get_radiuses(pegs) end
+        "native_elixir" => fn input -> GearsV2.get_radiuses(input) end,
+        "python" => fn input -> Gears.get_radiuses(input) end
+      },
+      inputs: %{
+        "Small (4)" => [4, 30, 50, 60],
+        "Medium (8)" => [4, 30, 50, 60, 80, 100, 120, 135],
+        "Bigger (12)" => [4, 30, 50, 60, 80, 100, 120, 135, 150, 160, 180, 250, 300, 326]
       },
       time: 10,
       memory_time: 2
