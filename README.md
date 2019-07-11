@@ -36,6 +36,10 @@ This approach utilizes linear algebra functions and fraction functions written i
 Specifically, it reduces the matrix into row echelon form utilizing Gaussian elimination.
 This implementation works well with small datasets (4x faster than the python implementation, although stil uses over 10x the memory; see benchmarking)
 
+#### Credit
+Fractions Code: https://github.com/lermannen/elixir-fraction <br />
+Linear Algebra Code: https://github.com/SebastianCallh/elixir-linear-algebra
+
 #### Setup
 
 Run `mix deps.get`
