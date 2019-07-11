@@ -2,6 +2,9 @@ defmodule LinearAlgebra do
   @moduledoc """
   Module containing logic for solving systems of linear equations
   via the Gaussian elimination method
+
+  The algorithms for reducing a matrix came from the following library:
+  https://github.com/SebastianCallh/elixir-linear-algebra
   """
 
   def solve_system_of_equations(matrix), do: reduce(matrix)
@@ -19,7 +22,7 @@ defmodule LinearAlgebra do
       ...>  )
       [ Fraction.new(-5), Fraction.new(2), Fraction.new(2) ]
   """
-  @spec reduce([[number]]) :: [[number]]
+  @spec reduce([[%Fraction{}]]) :: [[%Fraction{}]]
   def reduce(matrix), do: reduce(matrix, 0)
 
   defp reduce(matrix, row_number) do

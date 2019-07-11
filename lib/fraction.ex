@@ -1,6 +1,9 @@
 defmodule Fraction do
   @moduledoc """
   Fraction functions
+
+  Besides a few small tweaks, this code largely came from the following library:
+  https://github.com/lermannen/elixir-fraction
   """
   defstruct [:numerator, :denominator]
 

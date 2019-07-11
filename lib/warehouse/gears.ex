@@ -24,7 +24,7 @@ defmodule Warehouse.Gears do
         Fraction.new(6)
       ]
   """
-  @spec get_radiuses([Integer.t()]) :: [[]] | :error
+  @spec get_radiuses([Integer.t()]) :: [[%Fraction{}]] | :error
   def get_radiuses(pegs) do
     pegs
     |> Matrix.generate()

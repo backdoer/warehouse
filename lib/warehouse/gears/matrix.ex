@@ -18,7 +18,7 @@ defmodule Warehouse.Gears.Matrix do
         [Fraction.new(1), Fraction.new(0), Fraction.new(-2), Fraction.new(0)]
       ]
   """
-  @spec generate([Integer.t()]) :: [[]] | :error
+  @spec generate([Integer.t()]) :: [[%Fraction{}]] | :error
   def generate(pegs) do
     peg_count = Enum.count(pegs)
 

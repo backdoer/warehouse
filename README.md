@@ -22,7 +22,7 @@ Both implementations create a matrix from the inputs and then utilize linear alg
 
 ### Porting to Python
 **Branch**: `master` <br />
-This approach utilizes python's `numpy` library to handle the linear algebra. It then uses python's
+This approach ports to a python process and then utilizes python's `numpy` library to handle the linear algebra. It then uses python's
 fraction library to resolve the floating decimal point to the closest fraction within a denominator of 10.
 This implementation works very well with large datasets (4x faster than the native elixir implementation and over 100x more memory efficient; see benchmarking)
 
@@ -35,6 +35,10 @@ Run `mix deps.get` && `pip3 install --user --requirement requirements.txt`
 This approach utilizes linear algebra functions and fraction functions written in Native Elixir.
 Specifically, it reduces the matrix into row echelon form utilizing Gaussian elimination.
 This implementation works well with small datasets (4x faster than the python implementation, although stil uses over 10x the memory; see benchmarking)
+
+#### Credit
+Fractions Code: https://github.com/lermannen/elixir-fraction <br />
+Linear Algebra Code: https://github.com/SebastianCallh/elixir-linear-algebra
 
 #### Setup
 
