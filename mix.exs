@@ -22,6 +22,7 @@ defmodule Warehouse.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:benchee, "~> 1.0", only: :dev},
       {:credo, "~> 0.8.10", only: [:dev, :test]},
       {:erlport, "~> 0.9"}
     ]
