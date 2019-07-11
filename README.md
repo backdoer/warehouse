@@ -7,7 +7,7 @@ output of our windmills to our machines through a complex network of gears. Not 
 the power have to get to the machine, but it also needs to double the RPM of the input
 power by the last gear in the system.
 
-This application provides helper functions to be able to determine the necessary gear sizes.
+This application provides you with the functionality to be able to determine the necessary gear sizes.
 
 ## Dependencies
 * Python 3
@@ -17,19 +17,27 @@ This application provides helper functions to be able to determine the necessary
 Run `mix deps.get` && `pip3 install --user --requirement requirements.txt` to install the necessary python and elixir packages
 
 ## Implementations
-### Native Elixir
-This approach utilizes linear algebra functions and fraction functions written in Native Elixir.
-This implementation works well with small datasets (4x faster than the python implementation, although stil uses over 10x the memory; see benchmarking)
+Both implementations create a matrix from the inputs and then utilize linear algebra to solve for a system of linear equations. 
 
 ### Porting to Python
+**Branch**: `master`
 This approach utilizes python's `numpy` library to handle the linear algebra. It then uses python's
 fraction library to resolve the floating decimal point to the closest fraction within a denominator of 10.
 This implementation works very well with large datasets (4x faster than the native elixir implementation and over 100x more memory efficient; see benchmarking)
 
+### Native Elixir
+**Branch**: `use-fractions`
+This approach utilizes linear algebra functions and fraction functions written in Native Elixir.
+Specifically, it reduces the matrix into row echelon form utilizing Gaussian elimination.
+This implementation works well with small datasets (4x faster than the python implementation, although stil uses over 10x the memory; see benchmarking)
+
+
 All IO is handled with `IO.gets/1` and `IO.puts/1`. I considered using `Logger` for things like user warnings but it didn't feel like the right use case because
 `Logger` is more for application monitoring. 
 
-## Benchmarking
+## Benchmarking Both Implementations
+To run the benchmarks, go to the `both-solutions` branch and run `mix benchmark`
+
 ```
 Operating System: macOS
 CPU Information: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
@@ -105,6 +113,9 @@ python                3.34 KB - 0.07x memory usage -42.90625 KB
 **All measurements for memory usage were the same**
 ```
 
+It's interesting to note that the python implementation is slower with smaller datasets but faster with larger datasets.
+Also, Python always seems to outperform the pure elixir implementation in memory usage.
+
 ## Test and Lint
 **Format**: `mix format`<br />
 **Run tests**: `mix test`<br />
@@ -124,6 +135,6 @@ If a gear sequence is found for your peg input, the size of the first gear in th
 If no sequence is found, [-1, -1] will be returned.
 
 ## Next things on the horizon
-* Compile Python code to C
-* Only use fractions where necessary
-* Mock IO.gets and test end to end
+* Compile Python code to C (in python implementation)
+* Only use fractions where necessary (in pure elixir implementation)
+* Crate mock for IO.gets and test end to end
