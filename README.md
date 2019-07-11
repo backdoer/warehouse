@@ -143,7 +143,7 @@ You will be prompted for the positions of the pegs. Your input will be validated
 
 Input will be collected until either you input a value of `0` or you reach 20 pegs, whichever comes first.
 
-If a gear sequence is found for your peg input, the size of the first gear in the sequenc will be returned as a fractino: [a, b] where the size of the gear is a/b.
+If a gear sequence is found for your peg input, the size of the first gear in the sequence will be returned as a fraction: [a, b] where the size of the gear is a/b.
 If no sequence is found, [-1, -1] will be returned.
 
 ## Next things on the horizon
